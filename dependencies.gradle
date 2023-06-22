@@ -1,0 +1,49 @@
+ext {
+    openapiVersion = '2.0.4'
+    jacksonDatabindNullableVersion = '0.2.6'
+    validationApiVersion = '2.0.1.Final'
+    springdocOpenapiUiVersion = '1.6.9'
+    commonsCollections4Version = '4.4'
+    commonsTextVersion = '1.6'
+    jetbrainsAnnotationsVersion = '23.0.0'
+    jodaTimeVersion = '2.12.2'
+    springCloudOpenfeignCoreVersion = '2.2.5.RELEASE'
+    mapstructVersion = '1.5.3.Final'
+    modelMapperVerion = '3.1.1'
+    springCloudOpenfeignStarterVersion = '3.1.2'
+    javaxAnnotationVersion = '1.3.2'
+    dep = [
+            data               : [
+                    "org.springframework.boot:spring-boot-starter-data-jpa"
+            ],
+            swagger            : [
+                    "org.springdoc:springdoc-openapi-starter-webmvc-ui:$openapiVersion",
+                    "org.openapitools:jackson-databind-nullable:$jacksonDatabindNullableVersion"
+            ],
+            springWeb          : [
+                    "org.springframework.boot:spring-boot-starter-web",
+                    "org.springframework.boot:spring-boot-starter-test",
+                    "javax.annotation:javax.annotation-api:$javaxAnnotationVersion"
+
+            ],
+            springReactive     : [
+                    "org.springframework.boot:spring-boot-starter-webflux",
+                    "io.projectreactor:reactor-test"
+            ],
+            utils              : [
+                    "org.apache.commons:commons-collections4:$commonsCollections4Version",
+                    "org.apache.commons:commons-text:$commonsTextVersion",
+                    "org.jetbrains:annotations:$jetbrainsAnnotationsVersion",
+                    "joda-time:joda-time:$jodaTimeVersion"
+            ],
+            mapStruct          : [
+                    "org.mapstruct:mapstruct:$mapstructVersion",
+                    "org.mapstruct:mapstruct-processor:$mapstructVersion"
+            ],
+            modelMapper        : "org.modelmapper:modelmapper:$modelMapperVerion",
+            springDataCommons  : "org.springframework.data:spring-data-commons",
+            springOpenFeignCore: "org.springframework.cloud:spring-cloud-openfeign-core:$springCloudOpenfeignCoreVersion",
+            springFeignClient  : "org.springframework.cloud:spring-cloud-starter-openfeign:$springCloudOpenfeignStarterVersion"
+
+    ]
+}

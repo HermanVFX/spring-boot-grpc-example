@@ -1,0 +1,14 @@
+syntax = "proto3";
+package hello;
+
+message CreateDriverResponse {
+  string hello = 1;
+}
+
+message DriverRequest {
+  string name = 1;
+}
+
+service DriverService {
+  rpc addNewDriver(DriverRequest) returns (CreateDriverResponse);
+}

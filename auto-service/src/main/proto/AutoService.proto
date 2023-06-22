@@ -1,0 +1,14 @@
+syntax = "proto3";
+package hello;
+
+message AddAutoResponse {
+  string hello = 1;
+}
+
+message AutoRequest {
+  string name = 1;
+}
+
+service DriverService {
+  rpc addNewAuto(AutoRequest) returns (AddAutoResponse);
+}
