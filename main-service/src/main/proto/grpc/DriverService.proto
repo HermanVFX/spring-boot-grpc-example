@@ -1,14 +1,30 @@
 syntax = "proto3";
-package hello;
-
-message CreateDriverResponse {
-  string hello = 1;
-}
+package driver;
 
 message DriverRequest {
-  string name = 1;
+  string first_name = 1;
+  string last_name = 2;
+  string middle_name = 3;
+}
+
+message DriverResponse {
+  string id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string middle_name = 4;
+}
+
+message Id {
+  string id = 1;
+}
+
+message DeletedResponse {
+  bool isDeleted = 1;
 }
 
 service DriverService {
-  rpc addNewDriver(DriverRequest) returns (CreateDriverResponse);
+  rpc createAuto(DriverRequest) returns (DriverResponse);
+  rpc getAutoById(Id) returns (DriverResponse);
+  rpc updateAuto(Id) returns (DriverResponse);
+  rpc deleteAuto(Id) returns (DeletedResponse);
 }

@@ -5,32 +5,32 @@ info:
 servers:
   - url: http://localhost:8080/
 tags:
-  - name: User
-    description: User API
-  - name: Account
-    description: Account API
+  - name: Auto
+    description: Auto API
+  - name: Driver
+    description: Driver API
 paths:
 
-  /api/v1/account:
+  /api/v1/auto:
     post:
-      operationId: registrationAccount
-      summary: Registration Account
+      operationId: createAuto
+      summary: Create auto
       tags:
-        - Account
+        - Auto
       requestBody:
-        description: Account DTO
+        description: Auto request
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/AccountRegistrationRequest'
+              $ref: '#/components/schemas/AutoRequest'
         required: true
       responses:
         '201':
-          description: Created account
+          description: CREATED
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccountResponse'
+                $ref: '#/components/schemas/AutoResponse'
         '400':
           description: Invalid request
         '404':
@@ -40,21 +40,191 @@ paths:
         '500':
           description: Server error
 
+  /api/v1/auto/{id}:
+    get:
+      operationId: getAutoById
+      summary: Create auto
+      tags:
+        - Auto
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoResponse'
+        '400':
+          description: Invalid request
+        '404':
+          description: Resource not found
+        '405':
+          description: Method is not available
+        '500':
+          description: Server error
+
+    post:
+      tags:
+        - Auto
+      operationId: updateAuto
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/AutoRequest'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        201:
+          description: CREATED
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/AutoResponse'
+    delete:
+      tags:
+        - Auto
+      operationId: deleteAuto
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: OK
+
+  /api/v1/driver:
+    post:
+      operationId: createDriver
+      summary: Create driver
+      tags:
+        - Driver
+      requestBody:
+        description: Driver request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverRequest'
+        required: true
+      responses:
+        '201':
+          description: CREATED
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverResponse'
+        '400':
+          description: Invalid request
+        '404':
+          description: Resource not found
+        '405':
+          description: Method is not available
+        '500':
+          description: Server error
+
+  /api/v1/driver/{id}:
+    get:
+      operationId: getDriverById
+      summary: Create driver
+      tags:
+        - Driver
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverResponse'
+        '400':
+          description: Invalid request
+        '404':
+          description: Resource not found
+        '405':
+          description: Method is not available
+        '500':
+          description: Server error
+
+    post:
+      tags:
+        - Driver
+      operationId: updateDriver
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/DriverRequest'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        201:
+          description: CREATED
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/DriverResponse'
+    delete:
+      tags:
+        - Driver
+      operationId: deleteDriver
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        200:
+          description: OK
+
 components:
   schemas:
-    AccountRegistrationRequest:
+    AutoRequest:
       type: object
       properties:
-        login:
+        vin:
           type: string
-        password:
+        stateNumber:
           type: string
-        pin:
-          type: number
-        user:
-          $ref: '#/components/schemas/UserRegistrationRequest'
 
-    UserRegistrationRequest:
+    AutoResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        vin:
+          type: string
+        stateNumber:
+          type: string
+
+    DriverRequest:
       type: object
       properties:
         firstName:
@@ -63,14 +233,16 @@ components:
           type: string
         middleName:
           type: string
-        snils:
-          type: string
-        inn:
-          type: string
 
-    AccountResponse:
+    DriverResponse:
       type: object
       properties:
         id:
           type: string
           format: uuid
+        firstName:
+          type: string
+        lastName:
+          type: string
+        middleName:
+          type: string

@@ -1,14 +1,28 @@
 syntax = "proto3";
-package hello;
-
-message AddAutoResponse {
-  string hello = 1;
-}
+package auto;
 
 message AutoRequest {
-  string name = 1;
+  string vin = 1;
+  string state_number = 2;
 }
 
-service DriverService {
-  rpc addNewAuto(AutoRequest) returns (AddAutoResponse);
+message AutoResponse {
+  string id = 1;
+  string vin = 2;
+  string state_number = 3;
+}
+
+message Id {
+  string id = 1;
+}
+
+message DeletedResponse {
+  bool isDeleted = 1;
+}
+
+service AutoService {
+  rpc createAuto(AutoRequest) returns (AutoResponse);
+  rpc getAutoById(Id) returns (AutoResponse);
+  rpc updateAuto(Id) returns (AutoResponse);
+  rpc deleteAuto(Id) returns (DeletedResponse);
 }

@@ -1,1 +1,4 @@
 rootProject.name = 'spring-boot-grpc-example'
+include 'main-service', 'main-service-api'
+include 'driver-service'
+include 'auto-service'

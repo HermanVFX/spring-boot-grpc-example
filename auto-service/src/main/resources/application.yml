@@ -1,9 +1,9 @@
 spring:
   application:
-    name: driver-service
+    name: auto-service
 
 server:
-  port: 8082
+  port: 8081
 
 grpc:
   server:
