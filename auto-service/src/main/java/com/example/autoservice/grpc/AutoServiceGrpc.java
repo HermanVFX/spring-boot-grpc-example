@@ -1,16 +1,30 @@
 package com.example.autoservice.grpc;
 
 import auto.AutoServiceOuterClass;
+import com.example.autoservice.entity.Auto;
+import com.example.autoservice.repository.AutoRepository;
+import com.example.autoservice.service.AutoService;
 import io.grpc.stub.StreamObserver;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
 
+import java.time.OffsetDateTime;
+
+@Slf4j
 @GrpcService
+@RequiredArgsConstructor
 public class AutoServiceGrpc extends auto.AutoServiceGrpc.AutoServiceImplBase {
 
+    private final AutoService autoService;
+
     @Override
+    @Transactional
     public void createAuto(AutoServiceOuterClass.AutoRequest request,
                            StreamObserver<AutoServiceOuterClass.AutoResponse> responseObserver) {
-        super.createAuto(request, responseObserver);
+        responseObserver.onNext(autoService.createAuto(request));
+        responseObserver.onCompleted();
     }
 
     @Override

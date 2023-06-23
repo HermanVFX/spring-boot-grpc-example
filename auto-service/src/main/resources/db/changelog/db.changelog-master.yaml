@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: /25062023-1/create-auto-table.yaml
+      relativeToChangelogFile: true

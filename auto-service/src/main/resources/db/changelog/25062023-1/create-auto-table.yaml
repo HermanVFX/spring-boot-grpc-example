@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 25062023-1
+      author: Herman Makhiyanov
+      changes:
+        - createTable:
+            tableName: auto
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: vin
+                  type: varchar(500)
+              - column:
+                  name: state_number
+                  type: varchar(500)
+              - column:
+                  name: created_at
+                  type: timestamp
+              - column:
+                  name: deleted_at
+                  type: timestamp
+              - column:
+                  name: is_active
+                  type: boolean

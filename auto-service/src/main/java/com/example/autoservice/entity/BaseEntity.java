@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.io.Serializable;
+import java.time.OffsetDateTime;
 import java.util.Calendar;
 import java.util.Objects;
 import java.util.UUID;
@@ -23,11 +24,11 @@ public abstract class BaseEntity implements Serializable {
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
-    private Calendar createdAt;
+    private OffsetDateTime createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "deleted_at")
-    private Calendar deletedAt;
+    private OffsetDateTime deletedAt;
 
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
