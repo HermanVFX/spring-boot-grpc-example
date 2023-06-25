@@ -15,7 +15,6 @@ public class AutoServiceGrpcImpl {
     @GrpcClient("GLOBAL")
     AutoServiceGrpc.AutoServiceBlockingStub autoServiceBlockingStub;
 
-    @Transactional
     public AutoResponse createAuto(AutoRequest autoRequest) {
         return generatedAutoResponse(autoServiceBlockingStub.createAuto(generatedAutoRequest(autoRequest)));
     }

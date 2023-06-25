@@ -12,11 +12,6 @@ dependencies {
     implementation dep.springDataCommons
     implementation dep.springOpenFeignCore
 
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.liquibase:liquibase-core'
-
-
-
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 

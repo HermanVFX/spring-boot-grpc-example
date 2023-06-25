@@ -1,0 +1,2 @@
+CREATE SCHEMA IF NOT EXISTS "auto-service";
+CREATE SCHEMA IF NOT EXISTS "driver-service";

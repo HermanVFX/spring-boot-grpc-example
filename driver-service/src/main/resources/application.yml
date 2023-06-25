@@ -1,6 +1,21 @@
 spring:
   application:
     name: driver-service
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+  datasource:
+    #    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=driver-service
+    url: jdbc:postgresql://db:5432/postgres?currentSchema=driver-service
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    liquibase-schema: driver-service
+    enabled: true
 
 server:
   port: 8082

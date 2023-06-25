@@ -20,8 +20,15 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.liquibase:liquibase-core'
+
+    testImplementation 'org.projectlombok:lombok:1.18.26'
+
     runtimeOnly 'org.postgresql:postgresql'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation "org.testcontainers:junit-jupiter"
+    testImplementation "org.testcontainers:postgresql"
+    testImplementation 'org.springframework.retry:spring-retry:1.2.5.RELEASE'
 
     implementation "io.grpc:grpc-netty:${grpc_version}"
     implementation("net.devh:grpc-server-spring-boot-starter:${grpc_server_version}") {
