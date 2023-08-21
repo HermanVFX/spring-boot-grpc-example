@@ -25,7 +25,7 @@ public class AutoServiceImpl implements AutoService {
         var response = autoRepository.save(auto);
 
         return AutoServiceOuterClass.AutoResponse.newBuilder()
-                .setId(response.getId().toString())
+                .setId(response.getId())
                 .setVin(response.getVin())
                 .setStateNumber(response.getStateNumber())
                 .build();

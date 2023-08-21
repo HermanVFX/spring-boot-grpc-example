@@ -1,2 +1,2 @@
-CREATE SCHEMA IF NOT EXISTS "auto-service";
-CREATE SCHEMA IF NOT EXISTS "driver-service";
+CREATE SCHEMA IF NOT EXISTS "auto_service";
+CREATE SCHEMA IF NOT EXISTS "driver_service";

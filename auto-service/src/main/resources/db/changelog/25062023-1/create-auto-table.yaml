@@ -8,8 +8,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: uuid
-                  autoIncrement: true
+                  type: bigint
                   constraints:
                     primaryKey: true
                     nullable: false
@@ -17,9 +16,31 @@ databaseChangeLog:
               - column:
                   name: vin
                   type: varchar(500)
+                  constraints:
+                    nullable: false
+                    unique: true
               - column:
                   name: state_number
                   type: varchar(500)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: make
+                  type: varchar(500)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: age
+                  type: smallint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: driver_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+                    unique: true
               - column:
                   name: created_at
                   type: timestamp

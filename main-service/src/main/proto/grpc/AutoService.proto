@@ -4,25 +4,49 @@ package auto;
 message AutoRequest {
   string vin = 1;
   string state_number = 2;
+  string make = 3;
+  uint32 age = 4;
+  uint64 driver_id = 5;
 }
 
 message AutoResponse {
-  string id = 1;
+  uint64 id = 1;
   string vin = 2;
   string state_number = 3;
+  string make = 4;
+  uint32 age = 5;
+  uint64 driver_id = 6;
 }
 
 message Id {
-  string id = 1;
+  uint64 id = 1;
 }
 
 message DeletedResponse {
   bool isDeleted = 1;
 }
 
+message Pageble {
+  uint64 page = 2;
+  uint64 size = 3;
+}
+
+message PageAutoResponse {
+  repeated AutoResponse items = 1;
+  uint64 current_page = 2;
+  uint64 all_pages = 3;
+}
+
+message UpdateAutoRequest {
+  uint64 id = 1;
+  AutoRequest auto = 2;
+}
+
+
 service AutoService {
   rpc createAuto(AutoRequest) returns (AutoResponse);
+  rpc getAllAuto(Pageble) returns (PageAutoResponse);
   rpc getAutoById(Id) returns (AutoResponse);
-  rpc updateAuto(Id) returns (AutoResponse);
+  rpc updateAuto(UpdateAutoRequest) returns (AutoResponse);
   rpc deleteAuto(Id) returns (DeletedResponse);
 }

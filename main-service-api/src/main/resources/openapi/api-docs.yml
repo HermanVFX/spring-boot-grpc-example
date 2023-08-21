@@ -40,6 +40,40 @@ paths:
         '500':
           description: Server error
 
+    get:
+      operationId: getAllAuto
+      summary: Get all auto
+      tags:
+        - Auto
+      parameters:
+        - in: query
+          name: page
+          required: true
+          schema:
+            type: integer
+            nullable: false
+        - in: query
+          name: size
+          required: true
+          schema:
+            type: integer
+            nullable: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageAutoResponse'
+        '400':
+          description: Invalid request
+        '404':
+          description: Resource not found
+        '405':
+          description: Method is not available
+        '500':
+          description: Server error
+
   /api/v1/auto/{id}:
     get:
       operationId: getAutoById
@@ -51,8 +85,8 @@ paths:
           in: path
           required: true
           schema:
-            type: string
-            format: uuid
+            type: integer
+            format: int64
       responses:
         '200':
           description: OK
@@ -83,8 +117,8 @@ paths:
           in: path
           required: true
           schema:
-            type: string
-            format: uuid
+            type: integer
+            format: int64
       responses:
         201:
           description: CREATED
@@ -101,8 +135,8 @@ paths:
           in: path
           required: true
           schema:
-            type: string
-            format: uuid
+            type: integer
+            format: int64
       responses:
         200:
           description: OK
@@ -147,8 +181,8 @@ paths:
           in: path
           required: true
           schema:
-            type: string
-            format: uuid
+            type: integer
+            format: int64
       responses:
         '200':
           description: OK
@@ -179,8 +213,8 @@ paths:
           in: path
           required: true
           schema:
-            type: string
-            format: uuid
+            type: integer
+            format: int64
       responses:
         201:
           description: CREATED
@@ -188,6 +222,7 @@ paths:
             'application/json':
               schema:
                 $ref: '#/components/schemas/DriverResponse'
+
     delete:
       tags:
         - Driver
@@ -197,11 +232,36 @@ paths:
           in: path
           required: true
           schema:
-            type: string
-            format: uuid
+            type: integer
+            format: int64
       responses:
         200:
           description: OK
+
+  /api/v1/driver/transaction/{id}:
+    post:
+      tags:
+        - Driver
+      operationId: transactionDriver
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        201:
+          description: OK
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
 
 components:
   schemas:
@@ -212,17 +272,44 @@ components:
           type: string
         stateNumber:
           type: string
+        make:
+          type: string
+        age:
+          type: number
+        driver_id:
+          type: integer
+          format: int64
 
     AutoResponse:
       type: object
       properties:
         id:
-          type: string
-          format: uuid
+          type: integer
+          format: int64
         vin:
           type: string
         stateNumber:
           type: string
+        make:
+          type: string
+        age:
+          type: number
+        driver_id:
+          type: integer
+          format: int64
+
+    PageAutoResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutoResponse'
+        currentPage:
+          type: number
+        allPages:
+          type: number
+
 
     DriverRequest:
       type: object
@@ -233,13 +320,36 @@ components:
           type: string
         middleName:
           type: string
+        passport:
+          $ref: '#/components/schemas/PassportRequest'
+
+    PassportRequest:
+      properties:
+        serial:
+          type: integer
+          format: int32
+        number:
+          type: integer
+          format: int32
+
+    TransactionRequest:
+      properties:
+        sum:
+          type: number
+        isPlus:
+          type: boolean
+
+    TransactionResponse:
+      properties:
+        message:
+          type: string
 
     DriverResponse:
       type: object
       properties:
         id:
-          type: string
-          format: uuid
+          type: integer
+          format: int64
         firstName:
           type: string
         lastName:

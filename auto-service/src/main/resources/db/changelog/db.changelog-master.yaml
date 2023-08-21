@@ -2,3 +2,6 @@ databaseChangeLog:
   - include:
       file: /25062023-1/create-auto-table.yaml
       relativeToChangelogFile: true
+  - include:
+      file: /25062023-2/create-detail-table.yaml
+      relativeToChangelogFile: true

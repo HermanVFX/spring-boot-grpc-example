@@ -6,15 +6,15 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: none
-    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-#    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=auto-service
-    url: jdbc:postgresql://db:5432/postgres?currentSchema=auto-service
+#    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=auto_service
+    url: jdbc:postgresql://db:5432/postgres?currentSchema=auto_service
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
   liquibase:
-    liquibase-schema: auto-service
+    liquibase-schema: auto_service
     enabled: true
 
 server:

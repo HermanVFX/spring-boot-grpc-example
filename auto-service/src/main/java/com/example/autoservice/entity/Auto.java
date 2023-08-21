@@ -1,19 +1,21 @@
 package com.example.autoservice.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-@Table(schema = "auto-service", name = "auto")
+@Table(schema = "auto_service", name = "auto")
 public class Auto extends BaseEntity {
 
     @Column(name = "vin")
@@ -22,4 +24,16 @@ public class Auto extends BaseEntity {
     @Column(name = "state_number")
     private String stateNumber;
 
+    @Column(name = "driver_id")
+    private Long driverId;
+
+    @Column(name = "make")
+    private String make;
+
+    @Column(name = "age")
+    private Integer age;
+
+    @OneToMany(mappedBy = "auto", fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private List<Detail> details = new ArrayList<>();
 }

@@ -1,4 +1,4 @@
-package com.example.autoservice.entity;
+package com.example.driverservice.entity;
 
 import lombok.Getter;
 import lombok.Setter;

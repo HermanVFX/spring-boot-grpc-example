@@ -5,7 +5,7 @@ import com.example.autoservice.entity.Auto;
 import com.example.autoservice.repository.AutoRepository;
 import com.example.autoservice.service.AutoService;
 import io.grpc.stub.StreamObserver;
-import jakarta.transaction.Transactional;
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
